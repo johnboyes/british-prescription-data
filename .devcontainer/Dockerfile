@@ -11,6 +11,7 @@ RUN git config --global core.editor "code --wait"
     # https://askubuntu.com/a/1228181)
 ARG SHELLCHECK_VERSION="v0.7.1"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"] 
+# hadolint ignore=DL4001
 RUN mkdir -p /tmp/shellcheck \
     && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz" | tar -xJv -C /tmp/shellcheck/ \
     && install -m 755 /tmp/shellcheck/shellcheck-${SHELLCHECK_VERSION}/shellcheck /usr/local/bin/shellcheck \
