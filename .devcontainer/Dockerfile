@@ -12,11 +12,20 @@ RUN git config --global core.editor "code --wait"
 ARG SHELLCHECK_VERSION="v0.7.1"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"] 
 # hadolint ignore=DL4001
-RUN mkdir -p /tmp/shellcheck \
+RUN apt-get update \
+    && export DEBIAN_FRONTEND=noninteractive \
+# Install xz-utils to extract tarballs
+    && apt-get -y install --no-install-recommends xz-utils=5.2.4-1 \
+    && mkdir -p /tmp/shellcheck \
     && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz" | tar -xJv -C /tmp/shellcheck/ \
     && install -m 755 /tmp/shellcheck/shellcheck-${SHELLCHECK_VERSION}/shellcheck /usr/local/bin/shellcheck \
     && rm -rf /tmp/shellcheck \
     #
     # Install the Confluent Cloud CLI - see:
     # https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-cli-install
-    && curl -L --http1.1 https://cnfl.io/ccloud-cli | sh -s -- -b /usr/local/bin
+    && curl -L --http1.1 https://cnfl.io/ccloud-cli | sh -s -- -b /usr/local/bin \
+    #
+    # Clean up
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
