@@ -12,6 +12,7 @@ RUN git config --global core.editor "code --wait"
 ARG SHELLCHECK_VERSION="v0.7.1"
 ARG SECRETHUB_CLI_VERSION="v0.40.0"
 ARG MONGO_SHELL_VERSION="4.4.0"
+ARG MONGODB_TOOLS_VERSION="100.1.1"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"] 
 # hadolint ignore=DL4001
 RUN apt-get update \
@@ -34,6 +35,11 @@ RUN apt-get update \
     && install -m 755 /tmp/mongodb_shell/mongodb-linux-x86_64-debian10-${MONGO_SHELL_VERSION}/bin/mongo /usr/local/bin/mongo \
     && rm -rf /tmp/mongodb_shell \
     #
+    # Install Mongo database tools - needed for JSON import
+    && mkdir -p /tmp/mongodb_tools \
+    && wget -qO- "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian10-x86_64-${MONGODB_TOOLS_VERSION}.tgz" | tar -xz -C /tmp/mongodb_tools/ \
+    && install -m 755 /tmp/mongodb_tools/mongodb-database-tools-debian10-x86_64-${MONGODB_TOOLS_VERSION}/bin/mongoimport /usr/local/bin/mongoimport \
+    && rm -rf /tmp/mongodb_tools \
     # Install the Confluent Cloud CLI - see:
     # https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-cli-install
     && curl -L --http1.1 https://cnfl.io/ccloud-cli | sh -s -- -b /usr/local/bin \
