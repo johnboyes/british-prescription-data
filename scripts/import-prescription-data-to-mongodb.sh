@@ -8,4 +8,13 @@ PRESCRIPTION_DATA_FILE_PATH=$PRESCRIPTION_DATA_DIR/prescription_data.json
 mkdir -p "$PRESCRIPTION_DATA_DIR" || exit 1
 curl -o "$PRESCRIPTION_DATA_FILE_PATH" "$PRESCRIPTION_DATA_URL" || exit 1
 
-echo "Downloaded prescription data to $PRESCRIPTION_DATA_FILE_PATH"
+mongoimport "$MONGODB_CONNECTION_STRING" \
+    --db "$MONGODB_DB" \
+    --collection "$MONGODB_COLLECTION" \
+    --authenticationDatabase "$MONGODB_AUTH_DB" \
+    --username "$MONGODB_USERNAME" \
+    --password "$MONGODB_PASSWORD" \
+    --drop --file \
+    $PRESCRIPTION_DATA_FILE_PATH
+
+rm -rf $PRESCRIPTION_DATA_DIR
