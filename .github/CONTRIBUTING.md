@@ -6,6 +6,7 @@
 
 - A [Confluent Cloud](https://www.confluent.io/confluent-cloud) account 
 (3 month free trial when you signup)
+  
 
 - A [SecretHub](https://secrethub.io/) account:
   - [Install the SecretHub CLI](https://secrethub.io/docs/reference/cli/install/) - or open this repository in a [Codespace](https://github.com/features/codespaces/), which has the CLI pre-installed
@@ -16,6 +17,24 @@
     - `secrethub credential backup` 
   - Ask a [core maintainer of this project](CODEOWNERS) to be added to the project's SecretHub org, giving them your SecretHub username.
     - You must wait for the core maintainer to confirm that you are set up on the SecretHub org before you can proceed.
+
+
+- A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cloud account (free plan)
+  1. **[Sign up for a new account](https://www.mongodb.com/try)** if you do not already have one
+  2. Choose the **free tier**
+  3. **Create a cluster** as prompted and name it **`british-prescription-data`**
+     - Wait for the cluster to be created (takes a few minutes)
+  4. Click on the `Get Started` green helper link on the bottom left
+  5. Choose **`Create your first database user`**
+  6. Enter **`developer`** as the user name
+     - For the password, choose **`Autogenerate Secure Password`**, then copy and save it
+     - all the other defaults are fine, no need to change them
+  7. Choose **`Whitelist your IP address`** on the `Get Started` green helper menu
+     - Choose **`Allow access from anywhere`**
+  8. Choose **`Connect to your cluster`** on the `Get Started` green helper menu
+     - Choose **`Connect with the mongo shell`**
+     - **Copy the connection string** and save it somewhere
+  
 
 
 ### Visual Studio Code
