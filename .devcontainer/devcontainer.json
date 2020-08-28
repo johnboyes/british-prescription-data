@@ -17,7 +17,8 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"timonwong.shellcheck"
+		"timonwong.shellcheck",
+		"mikestead.dotenv"
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
