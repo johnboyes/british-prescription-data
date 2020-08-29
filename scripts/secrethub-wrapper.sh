@@ -10,4 +10,4 @@ if [[ -z "${SECRETHUB_USERNAME}" ]]; then
   echo "in the terminal, after this script has finished."
 fi
 
-secrethub run --var "user=$SECRETHUB_USERNAME" ./scripts/import-prescription-data-to-mongodb.sh
+secrethub run --var "env=$SECRETHUB_USERNAME" ./scripts/import-prescription-data-to-mongodb.sh
