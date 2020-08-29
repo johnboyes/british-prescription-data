@@ -31,3 +31,5 @@ echo "$REPO_NAME" | secrethub write "$COLLABORATOR_DIR"/mongodb-collection
 echo "admin" | secrethub write "$COLLABORATOR_DIR"/mongodb-auth-db
 
 echo "developer" | secrethub write "$COLLABORATOR_DIR"/mongodb-username
+
+secrethub read "$ORG_AND_REPO"/prod/prescription-data-url | secrethub write "$COLLABORATOR_DIR"/prescription-data-url
