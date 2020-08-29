@@ -33,14 +33,13 @@
      - Choose **`Allow access from anywhere`**
   8. Choose **`Connect to your cluster`** on the `Get Started` green helper menu
      - Choose **`Connect with the mongo shell`**
-     - **Copy the connection string** and modify it as follows:
-       - Just keep the bit between the quotes, removing the quotes and also removing`/<dbname>` at the end
+     - Copy just the MongoDB host name from the Connection
          
-         i.e. the bit you retain should look like this:
+         i.e. copy just the bit that looks like this:
          
-         `mongodb+srv://british-prescription-da.xxxxx.mongodb.net`
+         `british-prescription-da.xxxxx.mongodb.net`
          
-         Save this connection string somewhere temporarily
+         Save this MongoDB host name somewhere temporarily (you will add it to SecretHub in the next step)
 
 - Add your MongoDB details to SecretHub
   1. Log in to SecretHub if you are not already logged in:

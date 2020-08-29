@@ -9,9 +9,9 @@ REPO_NAME=british-prescription-data
 ORG_AND_REPO="$ORG_NAME"/"$REPO_NAME"
 COLLABORATOR_DIR="$ORG_AND_REPO"/"$SECRETHUB_COLLABORATOR"
 
-echo -n "Enter the MongoDB connection string you noted down earlier: "
-read -r SECRETHUB_MONGODB_CONNECTION_STRING
-echo "$SECRETHUB_MONGODB_CONNECTION_STRING" | secrethub write "$COLLABORATOR_DIR"/mongodb-connection-string
+echo -n "Enter the MongoDB host you noted down earlier: "
+read -r SECRETHUB_MONGODB_HOST
+echo "$SECRETHUB_MONGODB_HOST" | secrethub write "$COLLABORATOR_DIR"/mongodb-host
 
 echo -n "Enter the MongoDB developer password you noted down earlier: "
 read -r SECRETHUB_MONGODB_PASSWORD
