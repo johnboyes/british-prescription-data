@@ -47,12 +47,13 @@ development from within your browser) then all you need to do is [open this repo
      - Wait for the cluster to be created (takes a few minutes)
   4. Click on the `Get Started` green helper link on the bottom left
   5. Choose **`Create your first database user`**
-  6. Enter **`developer`** as the user name
+  6. Keep to the default Authentication Method choice as `Password`
+  7. Enter **`developer`** as the user name
      - For the password, choose **`Autogenerate Secure Password`**, then copy and save it
      - all the other defaults are fine, no need to change them
-  7. Choose **`Whitelist your IP address`** on the `Get Started` green helper menu
+  8. Choose **`Whitelist your IP address`** on the `Get Started` green helper menu
      - Choose **`Allow access from anywhere`**
-  8. Choose **`Connect to your cluster`** on the `Get Started` green helper menu
+  9. Choose **`Connect to your cluster`** on the `Get Started` green helper menu
      - Choose **`Connect with the mongo shell`**
      - Copy just the MongoDB host name from the Connection
          
