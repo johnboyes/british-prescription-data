@@ -71,7 +71,9 @@ development from within your browser) then all you need to do is [open this repo
   
 ---
 
-### Importing the prescription data into MongoDB
+### Importing the prescription data into MongoDB and then into Kafka
+
+#### Importing into MongoDB
 
 - NB you only need to run `secrethub init` once on your development machine (or Codespace):
 
@@ -81,5 +83,36 @@ development from within your browser) then all you need to do is [open this repo
 
   `./scripts/secrethub-wrapper.sh`
 
+  The data will now be in MongoDB, with each presecription record being stored as a separate 
+  [MongoDB document](https://docs.mongodb.com/manual/core/document/)
+
+
+#### Importing from MongoDB into Kafka
+
+1. Create a cluster on Confluent Cloud - call it `british-prescription-data`
+2. Go to connectors
+3. Choose MongoDB Atlas Source
+4. Generate an API key and secret
+    - enter `british-prescription-data` in the description field
+	  - save the API key and secret somewhere safe
+5. Enter `british-prescription-data` as the topic prefix
+6. Enter your MongoDB connection details
+    - You can read the connection host from SecretHub:
+	  - `secrethub read agilepathway/british-prescription-data/<your-secrethub-username>/mongodb-host`
+	  - Connection User: `developer`
+	  - You can read the connection password from SecretHub:
+	  - `secrethub read agilepathway/british-prescription-data/<your-secrethub-username>/mongodb-password`
+	  - Database name: `british-prescription-data`
+	  - Collection name `british-prescription-data`
+7. Set "Copy existing data" to true
+8. Set "Number of tasks for this connector" to 1
+9. Launch the connector
+
+Now you can see the messages in Kafka:
+
+1. Click on topics in the navigation menu
+2. Select your newly created topic
+3. Click on messages
+4. Enter `0 / Partition: 0` in the Offset field
+
 ---
-  
