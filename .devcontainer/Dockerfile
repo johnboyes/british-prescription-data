@@ -18,7 +18,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
 # Install xz-utils to extract tarballs
-    && apt-get -y install --no-install-recommends xz-utils=5.2.4-1 \
+    && apt-get -y install --no-install-recommends xz-utils \
     && mkdir -p /tmp/shellcheck \
     && wget -qO- "https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz" | tar -xJv -C /tmp/shellcheck/ \
     && install -m 755 /tmp/shellcheck/shellcheck-${SHELLCHECK_VERSION}/shellcheck /usr/local/bin/shellcheck \
